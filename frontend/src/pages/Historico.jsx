@@ -1,6 +1,4 @@
-import { solicitacoes } from "../services/mockData";
-
-function Historico() {
+function Historico({ solicitacoes }) {
   return (
     <div>
       <h2>Histórico de Solicitações</h2>

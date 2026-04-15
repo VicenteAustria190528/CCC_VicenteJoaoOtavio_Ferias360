@@ -1,6 +1,4 @@
-import { solicitacoes } from "../services/mockData";
-
-function AprovacaoGestor() {
+function AprovacaoGestor({ solicitacoes, onAtualizarStatus }) {
   const pendentes = solicitacoes.filter(
     (item) => item.status === "Aguardando Aprovação do Gestor"
   );
@@ -28,8 +26,18 @@ function AprovacaoGestor() {
                 <td style={styles.td}>{item.setor}</td>
                 <td style={styles.td}>{item.periodo}</td>
                 <td style={styles.td}>
-                  <button style={styles.aprovar}>Aprovar</button>
-                  <button style={styles.rejeitar}>Rejeitar</button>
+                  <button
+                    style={styles.aprovar}
+                    onClick={() => onAtualizarStatus(item.id, "Aprovada pelo Gestor")}
+                  >
+                    Aprovar
+                  </button>
+                  <button
+                    style={styles.rejeitar}
+                    onClick={() => onAtualizarStatus(item.id, "Rejeitada pelo Gestor")}
+                  >
+                    Rejeitar
+                  </button>
                 </td>
               </tr>
             ))}
