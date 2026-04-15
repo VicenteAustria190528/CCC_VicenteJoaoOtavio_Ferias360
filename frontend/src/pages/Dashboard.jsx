@@ -1,13 +1,24 @@
 function Dashboard({ solicitacoes }) {
   const total = solicitacoes.length;
+
   const aguardandoGestor = solicitacoes.filter(
     (item) => item.status === "Aguardando Aprovação do Gestor"
   ).length;
+
   const aprovadasGestor = solicitacoes.filter(
     (item) => item.status === "Aprovada pelo Gestor"
   ).length;
+
   const validadasRH = solicitacoes.filter(
     (item) => item.status === "Validada pelo RH"
+  ).length;
+
+  const rejeitadasGestor = solicitacoes.filter(
+    (item) => item.status === "Rejeitada pelo Gestor"
+  ).length;
+
+  const rejeitadasRH = solicitacoes.filter(
+    (item) => item.status === "Rejeitada pelo RH"
   ).length;
 
   return (
@@ -17,22 +28,32 @@ function Dashboard({ solicitacoes }) {
       <div style={styles.grid}>
         <div style={styles.card}>
           <h3>Total de Solicitações</h3>
-          <p style={styles.numero}>{total}</p>
+          <p style={styles.numeroVerde}>{total}</p>
         </div>
 
         <div style={styles.card}>
           <h3>Aguardando Gestor</h3>
-          <p style={styles.numero}>{aguardandoGestor}</p>
+          <p style={styles.numeroAzul}>{aguardandoGestor}</p>
         </div>
 
         <div style={styles.card}>
           <h3>Aprovadas pelo Gestor</h3>
-          <p style={styles.numero}>{aprovadasGestor}</p>
+          <p style={styles.numeroVerde}>{aprovadasGestor}</p>
         </div>
 
         <div style={styles.card}>
           <h3>Validadas pelo RH</h3>
-          <p style={styles.numero}>{validadasRH}</p>
+          <p style={styles.numeroVerde}>{validadasRH}</p>
+        </div>
+
+        <div style={styles.card}>
+          <h3>Rejeitadas pelo Gestor</h3>
+          <p style={styles.numeroVermelho}>{rejeitadasGestor}</p>
+        </div>
+
+        <div style={styles.card}>
+          <h3>Rejeitadas pelo RH</h3>
+          <p style={styles.numeroVermelho}>{rejeitadasRH}</p>
         </div>
       </div>
     </div>
@@ -42,7 +63,7 @@ function Dashboard({ solicitacoes }) {
 const styles = {
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
+    gridTemplateColumns: "repeat(3, 1fr)",
     gap: "20px",
     marginTop: "20px",
   },
@@ -52,11 +73,23 @@ const styles = {
     borderRadius: "8px",
     boxShadow: "0 1px 4px rgba(0,0,0,0.1)",
   },
-  numero: {
+  numeroVerde: {
     fontSize: "32px",
     fontWeight: "bold",
     marginTop: "10px",
     color: "#2ecc71",
+  },
+  numeroAzul: {
+    fontSize: "32px",
+    fontWeight: "bold",
+    marginTop: "10px",
+    color: "#3498db",
+  },
+  numeroVermelho: {
+    fontSize: "32px",
+    fontWeight: "bold",
+    marginTop: "10px",
+    color: "#e74c3c",
   },
 };
 

@@ -101,8 +101,8 @@ function App() {
                 />
               }
             />
-            <Route path="/relatorios" element={<Relatorios />} />
-            <Route path="/calendario" element={<Calendario />} />
+            <Route path="/relatorios" element={<Relatorios solicitacoes={solicitacoes} />} />
+            <Route path="/calendario" element={<Calendario solicitacoes={solicitacoes} />} />
           </Routes>
         </div>
       </div>
